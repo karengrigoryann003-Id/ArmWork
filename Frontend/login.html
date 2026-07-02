@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Մուտք - ArmWork</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Թեման բեռնում ենք շուտ, որ dark mode-ը չթարթի էջի բացման պահին -->
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="logo-area">
+            <div class="logo-box">AW</div>
+            <span class="brand-name">ArmWork</span>
+        </div>
+        
+        <div class="header-right">
+            <button class="theme-toggle-btn" id="theme-btn" title="Փոխել ռեժիմը">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+            <a href="index.html" class="back-link">← Գլխավոր էջ</a>
+        </div>
+    </header>
+
+    <main class="form-container">
+        <div class="form-card">
+            <h2 class="form-title">Մուտք գործել</h2>
+            <p class="form-subtitle">Մուտքագրեք ձեր տվյալները համակարգ անցնելու համար</p>
+
+            <form id="loginFreelancerForm" data-role="freelancer">
+                <div class="input-group">
+                    <label for="email">Էլ. Փոստ</label>
+                    <input type="email" id="email" placeholder="example@mail.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Գաղտնաբառ</label>
+                    <input type="password" id="password" placeholder="Մուտքագրեք գաղտնաբառը" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Մուտք</button>
+                <p class="form-message" id="loginFreelancerMessage"></p>
+            </form>
+
+            <div class="form-footer-text">
+                Չունե՞ք հաշիվ։ <a href="register-freelancer.html" class="register-link">Գրանցվել</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        &copy; 2026 ArmWork. Բոլոր իրավունքները պաշտպանված են:
+    </footer>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

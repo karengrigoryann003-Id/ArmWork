@@ -1,0 +1,493 @@
+/* ==========================================================================
+   ԲԱԺԻՆ 1: DARK / LIGHT MODE ԵՎ ԹԵՄԱՅԻ ԿՈՃԱԿ
+   Այստեղ գրված են մութ ռեժիմի բոլոր գույները և Արև/Լուսին կոճակի անիմացիան
+   ========================================================================== */
+
+/* Թեմայի փոխման կոճակի (Sun/Moon) ընդհանուր ոճը */
+.theme-toggle-btn {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle-btn:hover { background-color: rgba(0, 0, 0, 0.08); }
+
+.theme-toggle-btn svg {
+    position: absolute;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+}
+
+/* Արևի գույնը (Դեղին) և դիրքը Light Mode-ում */
+.sun-icon {
+    color: #ffb340; 
+    fill: #ffb340;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* Լուսնի գույնը (Apple-ի մանուշակագույն) և դիրքը Light Mode-ում (Թաքնված ներքևում) */
+.moon-icon {
+    color: #5e5ce6;
+    fill: #5e5ce6;
+    transform: translateY(24px) scale(0.5);
+    opacity: 0;
+}
+
+/* --- DARK MODE-Ի ԳՈՒՅՆԵՐԸ (.dark-theme դասի դեպքում) --- */
+html.dark-theme .site-body { background-color: #000000; color: #f5f5f7; }
+html.dark-theme .site-header { background-color: rgba(44, 44, 46, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+html.dark-theme .site-footer { background-color: #000000; color: #86868b; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+html.dark-theme .form-card, html.dark-theme .stat-card, html.dark-theme .job-card, html.dark-theme .sidebar-filters { background-color: #1c1c1e; border: 1px solid rgba(255, 255, 255, 0.06); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4); }
+html.dark-theme .form-title, html.dark-theme .stat-value, html.dark-theme .job-title, html.dark-theme .filter-list li, html.dark-theme .input-group label, html.dark-theme .brand-name, html.dark-theme .section-title, html.dark-theme .sidebar-title, html.dark-theme .job-price, html.dark-theme .hero-title { color: #ffffff; }
+html.dark-theme .form-subtitle, html.dark-theme .stat-label, html.dark-theme .job-desc, html.dark-theme .form-footer-text, html.dark-theme .site-nav a, html.dark-theme .hero-subtitle { color: #86868b; }
+html.dark-theme .input-group input, html.dark-theme .input-group select { background-color: #2c2c2e; color: #ffffff; border-color: transparent; }
+html.dark-theme .btn-client { background-color: #1c1c1e; color: #ffffff; border-color: #424245; }
+html.dark-theme .btn-client:hover { background-color: #2c2c2e; }
+html.dark-theme .user-profile-badge { background-color: #2c2c2e; color: #ffffff; }
+
+/* Կոճակի գույները Dark Mode-ում */
+html.dark-theme .theme-toggle-btn { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1); }
+html.dark-theme .theme-toggle-btn:hover { background-color: rgba(255, 255, 255, 0.1); }
+
+/* Արևը գնում է վերև և անհետանում */
+html.dark-theme .sun-icon { transform: translateY(-24px) scale(0.5); opacity: 0; }
+/* Լուսինը գալիս է կենտրոն */
+html.dark-theme .moon-icon { transform: translateY(0) scale(1); opacity: 1; }
+
+/* Dropdown գույները Dark Mode-ում */
+html.dark-theme .filter-dropdown { border-bottom-color: rgba(255,255,255,0.05); }
+html.dark-theme .filter-dropdown summary { color: #ffffff; }
+html.dark-theme .filter-dropdown[open] summary { color: #2997ff; }
+html.dark-theme .filter-dropdown[open] summary::before { color: #2997ff; }
+
+/* ==========================================================================
+   ԲԱԺԻՆ 2: ԱՆԻՄԱՑԻԱՆԵՐ
+   Էջերի մոտեցման և տարրերի հավաքվելու կանոնները
+   ========================================================================== */
+
+/* Էջերի թեթև մոտեցման անիմացիա */
+@keyframes iphoneIntro {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Դետալների (քարտեր, վահանակ) դրսից կենտրոն հավաքվելու անիմացիա */
+@keyframes iosGathering {
+    from { opacity: 0; transform: scale(1.08); filter: blur(8px); }
+    to { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+/* Կիրառում ենք անիմացիան էջի մեծ բլոկների վրա */
+.hero-section, .form-container, .dashboard-layout {
+    animation: iosGathering 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* ==========================================================================
+   ԲԱԺԻՆ 3: ՀԻՄՆԱԿԱՆ ԴԻԶԱՅՆ
+   Բոլոր էջերի համար նախատեսված ընդհանուր և կառուցվածքային ոճերը
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.site-body {
+    background-color: #f5f5f7;
+    color: #1d1d1f;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER ԵՎ ՆԱՎԻԳԱՑԻԱ */
+.site-header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-area { display: flex; align-items: center; gap: 12px; }
+.logo-box { background-color: #0071e3; color: #ffffff; font-weight: 700; font-size: 14px; width: 32px; height: 32px; border-radius: 8px; display: flex; justify-content: center; align-items: center; letter-spacing: -0.5px; }
+.brand-name { font-size: 19px; font-weight: 600; letter-spacing: -0.5px; color: #1d1d1f; }
+.site-nav { display: flex; gap: 24px; align-items: center; }
+.site-nav a { color: #515154; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+.site-nav a:hover { color: #0071e3; }
+.header-right { display: flex; align-items: center; gap: 20px; }
+.back-link { color: #0071e3; text-decoration: none; font-size: 14px; font-weight: 500; }
+.back-link:hover { text-decoration: underline; }
+
+/* ԳԼԽԱՎՈՐ ԷՋ (HERO) */
+.hero-section { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px; max-width: 800px; margin: 0 auto; }
+.hero-title { font-size: 56px; font-weight: 700; letter-spacing: -1.5px; margin-bottom: 16px; color: #1d1d1f; }
+.hero-subtitle { font-size: 21px; line-height: 1.4; color: #86868b; max-width: 600px; margin-bottom: 40px; }
+.buttons-container { display: flex; gap: 24px; width: 100%; max-width: 640px; justify-content: center; }
+.btn { flex: 1; max-width: 280px; padding: 24px 20px; border-radius: 18px; font-size: 17px; font-weight: 600; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; }
+.btn-subtext { font-size: 13px; font-weight: 400; opacity: 0.7; }
+.btn-freelancer { background-color: #0071e3; color: #ffffff; border: none; box-shadow: 0 4px 12px rgba(0, 113, 227, 0.15); }
+.btn-freelancer:hover { background-color: #0077ed; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 113, 227, 0.25); }
+.btn-client { background-color: #ffffff; color: #1d1d1f; border: 1px solid #d2d2d7; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02); }
+.btn-client:hover { background-color: #f5f5f7; border-color: #86868b; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06); }
+
+/* ՄՈՒՏՔ ԵՎ ԳՐԱՆՑՈՒՄ (FORMS) */
+.form-container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+.form-card { background-color: #ffffff; border-radius: 20px; padding: 40px; width: 100%; max-width: 480px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04); border: 1px solid rgba(0, 0, 0, 0.04); }
+.form-title { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 8px; text-align: center; }
+.form-subtitle { font-size: 15px; color: #86868b; margin-bottom: 32px; text-align: center; }
+.input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.input-group label { font-size: 14px; font-weight: 500; color: #1d1d1f; }
+.input-group input, .input-group select { background-color: #f5f5f7; border: 1px solid transparent; border-radius: 12px; padding: 14px 16px; font-size: 15px; color: #1d1d1f; outline: none; transition: border-color 0.2s, background-color 0.2s; width: 100%; }
+.input-group input:focus, .input-group select:focus { background-color: #ffffff; border-color: #0071e3; }
+.btn-submit { width: 100%; background-color: #0071e3; color: #ffffff; border: none; border-radius: 12px; padding: 16px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 12px; transition: background-color 0.2s; }
+.btn-submit:hover { background-color: #0077ed; }
+.form-footer-text { text-align: center; margin-top: 24px; font-size: 14px; color: #86868b; }
+.form-footer-text a { color: #0071e3; text-decoration: none; font-weight: 500; }
+.form-footer-text a:hover { text-decoration: underline; }
+
+/* ԱՇԽԱՏԱՆՔԱՅԻՆ ԷՋԵՐ (DASHBOARD) */
+.dashboard-layout { flex: 1; display: grid; grid-template-columns: 280px 14px 1fr; padding: 40px; max-width: 1400px; width: 100%; margin: 0 auto; gap: 0; }
+.sidebar-filters { background-color: #ffffff; border-radius: 20px; padding: 24px; height: fit-content; border: 1px solid rgba(0, 0, 0, 0.04); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02); }
+.sidebar-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #1d1d1f; letter-spacing: -0.3px; }
+
+/* ՆՈՐ DROPDOWN ԱՆԻՄԱՑԻԱՆԵՐ (Ֆիլտրեր և Ոլորտներ) */
+.filter-dropdown { margin-bottom: 12px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 10px; }
+.filter-dropdown:last-child { border-bottom: none; padding-bottom: 0; }
+.filter-dropdown summary { cursor: pointer; outline: none; user-select: none; font-weight: 500; color: #1d1d1f; font-size: 15px; display: flex; align-items: center; transition: color 0.2s; }
+.filter-dropdown summary::-webkit-details-marker { display: none; }
+.filter-dropdown summary::before { content: '▶'; font-size: 10px; color: #86868b; margin-right: 8px; transition: transform 0.2s, color 0.2s; }
+/* Երբ բացված է (կապույտ գույն) */
+.filter-dropdown[open] summary { color: #0071e3; }
+.filter-dropdown[open] summary::before { transform: rotate(90deg); color: #0071e3; }
+.filter-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; padding-left: 18px; }
+.filter-list li { font-size: 14px; color: #515154; cursor: pointer; transition: color 0.15s; }
+.filter-list li:hover { color: #0071e3; }
+
+.main-dashboard-content { grid-column: 3; display: flex; flex-direction: column; gap: 32px; }
+.dashboard-action-header { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 8px; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.stat-card { background-color: #ffffff; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 8px; border: 1px solid rgba(0, 0, 0, 0.04); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02); }
+.stat-label { font-size: 14px; color: #86868b; font-weight: 500; }
+.stat-value { font-size: 28px; font-weight: 700; color: #1d1d1f; letter-spacing: -0.5px; }
+.section-title { font-size: 22px; font-weight: 600; margin-bottom: 20px; letter-spacing: -0.4px; }
+.jobs-list { display: flex; flex-direction: column; gap: 16px; }
+.job-card { background-color: #ffffff; border-radius: 18px; padding: 24px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(0, 0, 0, 0.04); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02); transition: transform 0.2s, box-shadow 0.2s; }
+.job-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04); }
+.job-info { display: flex; flex-direction: column; gap: 6px; max-width: 70%; }
+.job-title { font-size: 18px; font-weight: 600; color: #1d1d1f; letter-spacing: -0.2px; }
+.job-company { font-size: 14px; color: #86868b; font-weight: 500; }
+.job-desc { font-size: 14px; color: #515154; line-height: 1.4; margin-top: 4px; }
+.job-action { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.job-price { font-size: 20px; font-weight: 700; color: #1d1d1f; letter-spacing: -0.5px; }
+.btn-apply { background-color: #0071e3; color: #ffffff; border: none; border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background-color 0.15s; }
+.btn-apply:hover { background-color: #0077ed; }
+.btn-create-job { background-color: #0071e3; color: #ffffff; border: none; border-radius: 10px; padding: 14px 24px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background-color 0.15s, transform 0.15s; }
+.btn-create-job:hover { background-color: #0077ed; transform: translateY(-1px); }
+
+/* Վահանակի աջ հատվածը */
+.user-profile-badge { background-color: #e8e8ed; color: #1d1d1f; padding: 6px 14px; border-radius: 12px; font-size: 13px; font-weight: 500; }
+.logout-link { color: #ff3b30; text-decoration: none; font-size: 14px; font-weight: 500; }
+.logout-link:hover { text-decoration: underline; }
+.chat-icon-btn { background: none; border: none; color: #515154; cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center; transition: color 0.2s; }
+.chat-icon-btn:hover { color: #0071e3; }
+.chat-badge { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background-color: #ff3b30; border-radius: 50%; }
+
+/* FOOTER */
+.site-footer { text-align: center; padding: 24px; font-size: 13px; color: #86868b; border-top: 1px solid rgba(0, 0, 0, 0.05); background-color: #ffffff; margin-top: auto; }
+
+
+/* ==========================================================================
+   ՆՈՐ ՈՃԵՐ: ՈՐՈՆՄԱՆ ՀԱՄԱԿԱՐԳ ԵՎ ԲԱԶՄԱԿԻ ՖԻԼՏՐԵՐ
+   ========================================================================== */
+
+/* Որոնման վահանակ (Search Bar) */
+.search-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.search-input {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 14px;
+    padding: 14px 16px 14px 46px; /* Ձախից տեղ ենք թողնում icon-ի համար */
+    font-size: 15px;
+    color: #1d1d1f;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+}
+
+/* Որոնման դաշտը Dark Mode-ում */
+html.dark-theme .search-input {
+    background-color: #1c1c1e;
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.search-input:focus {
+    border-color: #0071e3;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
+}
+
+html.dark-theme .search-input:focus {
+    background-color: #1c1c1e;
+    border-color: #2997ff;
+    box-shadow: 0 0 0 4px rgba(41, 151, 255, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #86868b;
+    pointer-events: none; /* Որպեսզի սեղմելիս չխանգարի input-ին */
+}
+
+/* Բազմակի ընտրության խմբեր (Checkbox Group) */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 4px 4px 4px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #515154;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+html.dark-theme .checkbox-label { color: #86868b; }
+.checkbox-label:hover { color: #0071e3; }
+html.dark-theme .checkbox-label:hover { color: #2997ff; }
+
+/* Պրոֆեսիոնալ Checkbox-ի ձևափոխում (Custom Apple-style Checkbox) */
+.checkbox-label input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #d2d2d7;
+    border-radius: 5px;
+    outline: none;
+    background-color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+html.dark-theme .checkbox-label input[type="checkbox"] {
+    border-color: #424245;
+    background-color: #2c2c2e;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+    background-color: #0071e3;
+    border-color: #0071e3;
+}
+
+html.dark-theme .checkbox-label input[type="checkbox"]:checked {
+    background-color: #2997ff;
+    border-color: #2997ff;
+}
+
+/* Checkbox-ի նշանը (✓) */
+.checkbox-label input[type="checkbox"]:checked::after {
+    content: "✓";
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Ներդրված (Nested) Dropdown կառուցվածք */
+.nested-filter-dropdown {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+html.dark-theme .nested-filter-dropdown {
+    border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+.nested-filter-dropdown summary {
+    font-size: 14px;
+    font-weight: 500;
+    color: #86868b !important;
+}
+
+.nested-group {
+    padding-left: 12px;
+    gap: 10px;
+}
+
+
+/* ==========================================================================
+   ԱՇԽԱՏԱՆՔԻՆ ԴԻՄԵԼՈՒ ԲԱՑՎՈՂ ՊԱՏՈՒՀԱՆ (SIDE PANEL) ԵՎ ԱՆԻՄԱՑԻԱՆԵՐ
+   ========================================================================== */
+
+/* 1. Գլխավոր էջի հետ քաշվելու էֆեկտը (կիրառվում է body-ի վրա) */
+body.panel-open .site-header,
+body.panel-open .dashboard-layout {
+    transform: scale(0.96);
+    filter: brightness(0.7);
+    border-radius: 12px;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none; /* Որպեսզի հետ գնացած վիճակում կոճակներ չսեղմվեն */
+}
+
+.site-header, .dashboard-layout {
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 2. Մթնեցնող և բլյուր անող ֆոն (Overlay) */
+.panel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s;
+}
+
+.panel-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 3. Աջից բացվող պանելը */
+.side-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60vw; /* Էկրանի 60%-ը */
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    transform: translateX(100%); /* Սկզբնական դիրքը՝ էկրանից դուրս */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+html.dark-theme .side-panel {
+    background-color: #1c1c1e;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+}
+
+.side-panel.active {
+    transform: translateX(0); /* Երբ ակտիվ է, գալիս է իր տեղը */
+}
+
+/* --- ՊԱՆԵԼԻ ՆԵՐՔԻՆ ԿԱՌՈՒՑՎԱԾՔԸ --- */
+.panel-header {
+    padding: 24px 32px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+html.dark-theme .panel-header { border-bottom-color: rgba(255,255,255,0.05); }
+
+.panel-title-block h2 { font-size: 24px; font-weight: 600; color: #1d1d1f; margin-bottom: 6px; letter-spacing: -0.5px; }
+html.dark-theme .panel-title-block h2 { color: #ffffff; }
+
+.btn-close-panel {
+    background: #f5f5f7;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #515154;
+    transition: background 0.2s;
+}
+.btn-close-panel:hover { background: #e8e8ed; }
+html.dark-theme .btn-close-panel { background: #2c2c2e; color: #86868b; }
+html.dark-theme .btn-close-panel:hover { background: #3a3a3c; color: #ffffff;}
+
+.panel-body { padding: 32px; flex: 1; }
+
+.panel-footer {
+    padding: 24px 32px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+html.dark-theme .panel-footer { border-top-color: rgba(255,255,255,0.05); }
+
+.btn-cancel {
+    background: transparent;
+    border: none;
+    color: #515154;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+html.dark-theme .btn-cancel { color: #86868b; }
+.btn-cancel:hover { text-decoration: underline; }
+
+/* Textarea և Գումարի դաշտի (Input) ոճերը պանելի մեջ */
+textarea.input-field {
+    width: 100%;
+    background-color: #f5f5f7;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: #1d1d1f;
+    outline: none;
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+textarea.input-field:focus { background-color: #ffffff; border-color: #0071e3; }
+html.dark-theme textarea.input-field { background-color: #2c2c2e; color: #ffffff; }
+html.dark-theme textarea.input-field:focus { background-color: #1c1c1e; border-color: #2997ff; }
+
+.input-with-icon { position: relative; display: flex; align-items: center; }
+.input-with-icon input { padding-right: 36px; font-weight: 600; font-size: 16px;}
+.input-icon-right { position: absolute; right: 16px; color: #86868b; font-weight: 500; pointer-events: none; }

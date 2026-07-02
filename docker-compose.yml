@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    container_name: armwork-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+    ports:
+      - "1434:1433"
+    volumes:
+      - armwork_sql_data:/var/opt/mssql
+
+  backend:
+    build:
+      context: .
+      dockerfile: Backend/Dockerfile
+    platform: linux/amd64
+    container_name: armwork-backend
+    depends_on:
+      - db
+    environment:
+      ARMWORK_DB_TYPE: mssql
+      ARMWORK_DB_SERVER: db,1433
+      ARMWORK_DB_NAME: ArmWork
+      ARMWORK_DB_USER: SA
+      ARMWORK_DB_PASSWORD: ${MSSQL_SA_PASSWORD}
+      ARMWORK_API_HOST: 0.0.0.0
+      ARMWORK_API_PORT: 5050
+      ARMWORK_DEBUG: "true"
+    ports:
+      - "5050:5050"
+
+volumes:
+  armwork_sql_data:

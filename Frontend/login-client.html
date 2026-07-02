@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Պատվիրատուի Մուտք - ArmWork</title>
+    <!-- Թեման բեռնում ենք շուտ, որ dark mode-ը չթարթի էջի բացման պահին -->
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="logo-area">
+            <div class="logo-box">AW</div>
+            <span class="brand-name">ArmWork</span>
+        </div>
+        <a href="index.html" class="back-link">← Գլխավոր էջ</a>
+    </header>
+
+    <main class="form-container">
+        <div class="form-card">
+            <h2 class="form-title">Մուտք Պատվիրատուների համար</h2>
+            <p class="form-subtitle">Գտեք լավագույն մասնագետներին ձեր նախագծերի համար</p>
+
+            <form id="loginClientForm" data-role="client">
+                <div class="input-group">
+                    <label for="client-email">Էլ. Փոստ</label>
+                    <input type="email" id="client-email" placeholder="company@mail.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="client-password">Գաղտնաբառ</label>
+                    <input type="password" id="client-password" placeholder="Մուտքագրեք գաղտնաբառը" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Մուտք</button>
+                <p class="form-message" id="loginClientMessage"></p>
+            </form>
+
+            <div class="form-footer-text">
+                Նո՞ր եք այստեղ։ <a href="register-client.html" class="register-link">Գրանցել ընկերություն</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        &copy; 2026 ArmWork. Բոլոր իրավունքները պաշտպանված են:
+    </footer>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

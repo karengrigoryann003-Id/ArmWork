@@ -1,0 +1,108 @@
+/* ==========================================================================
+   ArmWork Auth Styles
+   Login/Register էջերի card, form և submit կոճակներ։
+   Input-ների shared ոճերը գտնվում են global.css-ում, քանի որ dashboard panel-ն էլ է օգտագործում։
+   ========================================================================== */
+
+.form-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.form-card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-large-card);
+    padding: 40px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border-card);
+}
+
+.form-title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.form-subtitle {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-input);
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background-color var(--transition-fast);
+}
+
+.btn-submit:hover { background-color: var(--color-primary-hover); }
+
+.form-footer-text {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--color-text-muted);
+}
+
+.form-footer-text a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-footer-text a:hover { text-decoration: underline; }
+
+/* Auth էջերի card-ը փոքր էկրանների վրա ավելի նեղ padding է ստանում։ */
+@media (max-width: 600px) {
+    .form-container {
+        align-items: flex-start;
+        padding: 32px 16px;
+    }
+
+    .form-card {
+        padding: 28px 20px;
+        border-radius: var(--radius-card);
+    }
+
+    .form-title {
+        font-size: 24px;
+    }
+
+    .form-subtitle {
+        margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 380px) {
+    .form-card {
+        padding: 24px 16px;
+    }
+}
+
+/* Backend-ից եկող հաջող/սխալ հաղորդագրությունները form-ի ներսում */
+.form-message {
+    min-height: 18px;
+    margin-top: 14px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-text-muted);
+}
+
+.form-message.is-error { color: var(--color-danger); }
+.form-message.is-success { color: var(--color-success); }

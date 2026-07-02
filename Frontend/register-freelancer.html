@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Գրանցվել որպես Ֆրիլանսեր - ArmWork</title>
+    <!-- Թեման բեռնում ենք շուտ, որ dark mode-ը չթարթի էջի բացման պահին -->
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="logo-area">
+            <div class="logo-box">AW</div>
+            <span class="brand-name">ArmWork</span>
+        </div>
+        <a href="index.html" class="back-link">← Հետ գնալ</a>
+    </header>
+
+    <main class="form-container">
+        <div class="form-card">
+            <h2 class="form-title">Ստեղծել Ֆրիլանսերի Հաշիվ</h2>
+            <p class="form-subtitle">Մուտքագրեք ձեր տվյալները՝ պատվերներ ստանալու համար</p>
+
+            <form id="registerFreelancerForm" data-role="freelancer">
+                <div class="input-group">
+                    <label for="fullname">Անուն Ազգանուն</label>
+                    <input type="text" id="fullname" placeholder="Արամ Արամյան" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Էլ. Փոստ</label>
+                    <input type="email" id="email" placeholder="example@mail.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="aram_dev" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="specialty">Մասնագիտացում</label>
+                    <select id="specialty" required>
+                        <option value="" disabled selected>Ընտրեք ձեր ուղղությունը</option>
+                        <option value="dev">Ծրագրավորում & ՏՏ</option>
+                        <option value="design">Դիզայն & Մուլտիմեդիա</option>
+                        <option value="writing">Տեքստեր & Թարգմանություն</option>
+                        <option value="marketing">Մարքեթինգ & Գովազդ</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Գաղտնաբառ</label>
+                    <input type="password" id="password" placeholder="Նվազագույնը 8 նիշ" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Հաստատել գրանցումը</button>
+                <p class="form-message" id="registerFreelancerMessage"></p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        &copy; 2026 ArmWork. Բոլոր իրավունքները պաշտպանված են:
+    </footer>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

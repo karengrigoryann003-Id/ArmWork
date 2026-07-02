@@ -1,0 +1,126 @@
+/* ==========================================================================
+   ArmWork Main Page Styles
+   Միայն landing/main.html էջի hero և role ընտրության կոճակներ։
+   ========================================================================== */
+
+.hero-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+    color: var(--color-text);
+}
+
+.hero-subtitle {
+    font-size: 21px;
+    line-height: 1.4;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    max-width: 640px;
+    justify-content: center;
+}
+
+/* Role ընտրության մեծ կոճակներ */
+.btn {
+    flex: 1;
+    max-width: 280px;
+    padding: 24px 20px;
+    border-radius: var(--radius-card);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.btn-subtext {
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+.btn-freelancer {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    box-shadow: var(--shadow-primary);
+}
+
+.btn-freelancer:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary-hover);
+}
+
+.btn-client {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--border-input);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.btn-client:hover {
+    background-color: var(--color-page);
+    border-color: var(--color-text-muted);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Landing էջը փոքր էկրանների վրա դառնում է մեկ սյունակով։ */
+@media (max-width: 700px) {
+    .hero-section {
+        justify-content: flex-start;
+        padding: 56px 16px 32px;
+    }
+
+    .hero-title {
+        font-size: 44px;
+        margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+        margin-bottom: 28px;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        max-width: 360px;
+    }
+
+    .btn {
+        max-width: none;
+        width: 100%;
+        padding: 20px 18px;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-title { font-size: 38px; }
+    .hero-subtitle { font-size: 16px; }
+    .btn { font-size: 16px; }
+}

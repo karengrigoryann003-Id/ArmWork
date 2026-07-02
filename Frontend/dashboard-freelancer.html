@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Աշխատանքային էջ - ArmWork</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Թեման բեռնում ենք շուտ, որ dark mode-ը չթարթի էջի բացման պահին -->
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="site-body">
+
+    <header class="site-header">
+        <div class="logo-area">
+            <div class="logo-box">AW</div>
+            <span class="brand-name">ArmWork</span>
+        </div>
+        
+        <div class="header-right">
+            <button class="theme-toggle-btn" id="theme-btn" title="Փոխել ռեժիմը">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+
+            <button class="chat-icon-btn" title="Նամակներ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span class="chat-badge"></span>
+            </button>
+            
+            <div class="user-profile-badge">Կարեն Գրիգորյան</div>
+            <a href="index.html" class="logout-link">Դուրս գալ</a>
+        </div>
+    </header>
+
+    <main class="dashboard-layout">
+        
+        <!-- ՁԱԽ ՎԱՀԱՆԱԿ: ՖԻԼՏՐԵՐ -->
+        <aside class="sidebar-filters">
+            <!-- Գլխավոր dropdown-ի անունը փոխվեց «Աշխատանքի ֆիլտրում» -->
+            <details class="filter-dropdown" open>
+                <summary>Աշխատանքի ֆիլտրում</summary>
+                
+                <div class="filter-group">
+                    <!-- Բազմակի ընտրության հնարավորություն (Checkboxes) -->
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="main-filter" value="all" checked>
+                        <span>Բոլորը</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="main-filter" value="recommended">
+                        <span>Առաջարկվող</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="main-filter" value="saved">
+                        <span>Պահպանված</span>
+                    </label>
+
+                    <!-- ՆԵՐԴՐՎԱԾ (NESTED) DROPDOWN: Կատեգորիաներ -->
+                    <details class="nested-filter-dropdown" open>
+                        <summary>Բոլոր Կատեգորիաները</summary>
+                        <div class="filter-group nested-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="dev">
+                                <span>Ծրագրավորում</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="design">
+                                <span>Դիզայն</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="marketing">
+                                <span>Մարքեթինգ</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="category" value="copywrite">
+                                <span>Քոփիրայթինգ</span>
+                            </label>
+                        </div>
+                    </details>
+
+                </div>
+            </details>
+        </aside>
+
+        <!-- ԱՋ ՎԱՀԱՆԱԿ: ԲՈՎԱՆԴԱԿՈՒԹՅՈՒՆ -->
+        <div class="main-dashboard-content">
+            
+            <div class="dashboard-action-header">
+                <div>
+                    <h2 class="section-title dashboard-title-compact">Ողջույն Կարեն Գրիգորյան</h2>
+                    <p class="dashboard-subtitle">Ահա ձեր ընթացիկ վիճակագրությունը:</p>
+                </div>
+            </div>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Ակտիվ դիմումներ</span>
+                    <span class="stat-value">3</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Ավարտած աշխատանքներ</span>
+                    <span class="stat-value">12</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Ընդհանուր վաստակ</span>
+                    <span class="stat-value">450,000 ֏</span>
+                </div>
+            </section>
+
+            <section class="jobs-list">
+                <h2 class="section-title section-title-search">Փնտրել Աշխատանք</h2>
+                
+                <!-- ՆՈՐ: Որոնման համակարգ (Search Bar) -->
+                <div class="search-container">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Որոնել աշխատանքներ ըստ հմտությունների, վերնագրի կամ ոլորտի...">
+                </div>
+
+                <!-- Աշխատանքների ցուցակը -->
+                <div class="job-card">
+                    <div class="job-info">
+                        <h3 class="job-title">Landing Page-ի պատրաստում (HTML/CSS)</h3>
+                        <p class="job-company">Պատվիրատու՝ Արմեն Գ.</p>
+                        <p class="job-desc">Անհրաժեշտ է ստեղծել մինիմալիստական էջ ծառայությունների ներկայացման համար:</p>
+                    </div>
+                    <div class="job-action">
+                        <span class="job-price">60,000 ֏</span>
+                        <button class="btn-apply">Դիմել</button>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-info">
+                        <h3 class="job-title">Լոգոյի դիզայն ՏՏ ընկերության համար</h3>
+                        <p class="job-company">Պատվիրատու՝ Լիլիթ Ս.</p>
+                        <p class="job-desc">Փնտրում ենք ստեղծագործ դիզայներ նոր ստարտափի բրենդինգի և լոգոյի ստեղծման համար։</p>
+                    </div>
+                    <div class="job-action">
+                        <span class="job-price">45,000 ֏</span>
+                        <button class="btn-apply">Դիմել</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="panel-overlay" id="panelOverlay"></div>
+    <aside class="side-panel" id="applyPanel">
+        <div class="panel-header">
+            <div class="panel-title-block">
+                <h2>Դիմել աշխատանքին</h2>
+                <p class="panel-job-name">Landing Page-ի պատրաստում (HTML/CSS)</p>
+                <p class="panel-job-client">Պատվիրատու՝ Արմեն Գ.</p>
+            </div>
+            <button class="btn-close-panel" id="closePanelBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        
+        <div class="panel-body">
+            <form id="applyForm">
+                <div class="input-group">
+                    <label>Ձեր գնային առաջարկը</label>
+                    <div class="input-with-icon">
+                        <input type="text" value="60,000" required>
+                        <span class="input-icon-right">֏</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Կատարման ժամկետ</label>
+                    <select required>
+                        <option value="1-3">1 - 3 օր</option>
+                        <option value="3-7" selected>3 - 7 օր</option>
+                        <option value="1-2w">1 - 2 շաբաթ</option>
+                        <option value="1m">1 ամիս և ավել</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Ուղեկցող նամակ / Առաջարկ</label>
+                    <textarea class="input-field" placeholder="Նկարագրեք ձեր փորձը և ինչու եք դուք լավագույն թեկնածուն այս նախագծի համար..." required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Պորտֆոլիոյի հղում (կամ CV)</label>
+                    <input type="url" placeholder="https://..." class="input-field">
+                </div>
+            </form>
+        </div>
+
+        <div class="panel-footer">
+            <button type="button" class="btn-cancel" id="cancelPanelBtn">Չեղարկել</button>
+            <button type="button" class="btn-apply btn-panel-submit">Ուղարկել հայտը</button>
+        </div>
+    </aside>
+
+    <div class="chat-overlay" id="chatOverlay" aria-hidden="true">
+        <section class="chat-modal" id="chatModal" aria-label="Messages">
+            <div class="messages-list-view" id="messagesListView">
+                <div class="messages-topbar">
+                    <button type="button" class="messages-edit-btn" id="closeChatBtn">Edit</button>
+                    <button type="button" class="messages-menu-btn" id="messagesMenuBtn" title="Փակել հաղորդագրությունները">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <h2 class="messages-title">Messages</h2>
+
+                <div class="messages-list" id="messagesList">
+                    <div class="messages-empty-state">
+                        <h3>Չաթեր դեռ չկան</h3>
+                        <p>Սկսիր նոր չաթ՝ ներքևի որոնման դաշտում գրելով օգտատիրոջ username-ը։</p>
+                    </div>
+                </div>
+
+                <div class="messages-search-results" id="messagesSearchResults"></div>
+
+                <div class="messages-bottom-bar">
+                    <div class="messages-search-wrap">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+                        </svg>
+                        <input type="text" id="chatUsernameSearch" placeholder="Search username..." autocomplete="off">
+                    </div>
+                    <button type="button" class="messages-compose-btn" id="startChatBtn" title="Սկսել նոր չաթ">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20h9"></path>
+                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="message-thread-view is-hidden" id="messageThreadView">
+                <div class="thread-header">
+                    <button type="button" class="thread-back-btn" id="threadBackBtn">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="thread-contact">
+                        <div class="thread-avatar" id="threadAvatar">AW</div>
+                        <div>
+                            <h3 id="threadName">Ընտրեք չաթ</h3>
+                            <p id="threadUsername">username</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thread-messages" id="threadMessages"></div>
+
+                <form class="thread-footer" id="messageForm">
+                    <input type="text" id="messageInput" placeholder="iMessage..." autocomplete="off">
+                    <button type="submit" class="thread-send-btn" title="Ուղարկել">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="19" x2="12" y2="5"></line>
+                            <polyline points="5 12 12 5 19 12"></polyline>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/dashboard-freelancer.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>
